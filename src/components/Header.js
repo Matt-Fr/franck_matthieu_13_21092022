@@ -1,16 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import argentBankLogo from "../assets/argentBankLogo.png";
 
 const Header = () => {
   return (
     <nav className="main-nav">
-      <Link className="main-nav-logo ">
+      <NavLink className="main-nav-logo " to="/">
         <img src={argentBankLogo} alt="logo" className="main-nav-logo-image" />
-      </Link>
+      </NavLink>
       <div>
         {/* <FontAwesomeIcon icon="fa-solid fa-circle-user" /> */}
-        <Link className="main-nav-item">Sign In</Link>
+        <NavLink className="main-nav-item" to="/sign-in">
+          Sign In
+        </NavLink>
       </div>
     </nav>
   );
