@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SharedLayout from "./pages/SharedLayout";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
+import User from "./pages/User";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path="/sign-in" element={<Signin />} />
+          <Route path="/login" element={<Signin />} />
+          <Route path="/profile" element={<User />} />
+
           {/* <Route path="profil" element={<Profil />}></Route>
           <Route path="/user/:id" element={<Profil />}></Route> */}
         </Route>
