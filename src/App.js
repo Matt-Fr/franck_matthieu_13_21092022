@@ -14,9 +14,6 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Signin />} />
           <Route path="/profile" element={<User />} />
-
-          {/* <Route path="profil" element={<Profil />}></Route>
-          <Route path="/user/:id" element={<Profil />}></Route> */}
         </Route>
       </Routes>
     </BrowserRouter>
