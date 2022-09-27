@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../features/userSlice";
 
 const initialState = {
   email: "",
@@ -9,6 +11,8 @@ const initialState = {
 
 const Signin = () => {
   const [values, setValues] = useState(initialState);
+  const { user } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -22,6 +26,8 @@ const Signin = () => {
     if (!email || !password) {
       console.log("please fill out all fields");
     }
+    //on récupère loginUser from the userSlice
+    dispatch(loginUser({ email: email, password: password }));
   };
 
   return (
