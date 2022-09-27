@@ -10,7 +10,7 @@ const Header = () => {
       </NavLink>
       <div>
         {/* <FontAwesomeIcon icon="fa-solid fa-circle-user" /> */}
-        <NavLink className="main-nav-item" to="/sign-in">
+        <NavLink className="main-nav-item" to="/login">
           Sign In
         </NavLink>
       </div>

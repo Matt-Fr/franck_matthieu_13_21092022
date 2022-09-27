@@ -1,26 +1,63 @@
 import React from "react";
+import { useState } from "react";
+
+const initialState = {
+  email: "",
+  password: "",
+  isMember: true,
+};
 
 const Signin = () => {
+  const [values, setValues] = useState(initialState);
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log(`${name}${value}`);
+    setValues({ ...values, [name]: value });
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const { email, password, isMember } = values;
+    if (!email || !password) {
+      console.log("please fill out all fields");
+    }
+  };
+
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
         {/* <i className="fa fa-user-circle sign-in-icon"></i> */}
         <h1>Sign In</h1>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="input-wrapper">
-            <label for="username">Username</label>
-            <input type="text" id="username" />
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              name="email"
+              id="username"
+              value={values.email}
+              onChange={handleChange}
+            />
           </div>
           <div className="input-wrapper">
-            <label for="password">Password</label>
-            <input type="password" id="password" />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={handleChange}
+              value={values.password}
+            />
           </div>
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
-            <label for="remember-me">Remember me</label>
+            <label htmlFor="remember-me">Remember me</label>
           </div>
 
-          <button class="sign-in-button">Sign In</button>
+          <button className="sign-in-button" type="submit">
+            Sign In
+          </button>
         </form>
       </section>
     </main>
