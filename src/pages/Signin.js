@@ -6,11 +6,11 @@ import { loginUser } from "../features/userSlice";
 const initialState = {
   email: "",
   password: "",
-  isMember: true,
 };
 
 const Signin = () => {
   const [values, setValues] = useState(initialState);
+  //{user} que je récupère du store
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
