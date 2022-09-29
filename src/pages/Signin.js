@@ -22,7 +22,7 @@ const Signin = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    const { email, password, isMember } = values;
+    const { email, password } = values;
     if (!email || !password) {
       console.log("please fill out all fields");
     }
