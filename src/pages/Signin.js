@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../features/userSlice";
+import { loginUser } from "../features/user/userSlice";
 
 const initialState = {
   email: "",
