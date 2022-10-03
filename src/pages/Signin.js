@@ -6,28 +6,30 @@ import { loginUser } from "../features/user/userSlice";
 const initialState = {
   email: "",
   password: "",
+  authToken: "",
+  isMember: true,
 };
 
 const Signin = () => {
   const [values, setValues] = useState(initialState);
   //{user} que je récupère du store
-  const { user } = useSelector((store) => store.user);
+  const { user, isLoading } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(`${name}${value}`);
+    console.log(`${name} ${value}`);
     setValues({ ...values, [name]: value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = values;
+    const { email, password, authToken } = values;
     if (!email || !password) {
       console.log("please fill out all fields");
     }
     //on récupère loginUser from the userSlice
-    dispatch(loginUser({ email: email, password: password }));
+    dispatch(loginUser({ email: email, password: password, token: authToken }));
   };
 
   return (
