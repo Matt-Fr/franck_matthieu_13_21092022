@@ -13,15 +13,15 @@ export const loginUser = createAsyncThunk(
   "user/login",
   async (user, thunkAPI) => {
     try {
+      console.log(initialState);
       console.log(`ce qu'on va balancer au serveur ${JSON.stringify(user)}`);
       const resp = await customFetch.post("/user/login", user);
       console.log(resp);
-      const token = resp.data.body.token;
-      localStorage.setItem("userToken", token);
-      console.log(user);
+      // const token = resp.data.body.token;
+      // localStorage.setItem("userToken", token);
+      return resp.data;
     } catch (error) {
-      console.log(error);
-      alert(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -29,6 +29,21 @@ export const loginUser = createAsyncThunk(
 const userSlice = createSlice({
   name: "user",
   initialState,
+  extraReducers: {
+    [loginUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [loginUser.fulfilled]: (state, { payload }) => {
+      //payload is what we obtain in the return in the asyncthunk
+      state.isLoading = false;
+      state.authToken = payload.body.token;
+      alert(state.authToken);
+    },
+    [loginUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      alert(payload);
+    },
+  },
 });
 
 export default userSlice.reducer;
