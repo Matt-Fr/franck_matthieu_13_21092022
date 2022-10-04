@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { loginUser, getUser } from "../features/user/userSlice";
 
 const initialState = {
@@ -15,6 +16,7 @@ const Signin = () => {
   //{user} que je récupère du store
   const { user, isLoading, authToken } = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -38,6 +40,12 @@ const Signin = () => {
       dispatch(getUser(authToken));
     }
   }, [authToken, dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/profile");
+    }
+  }, [user]);
 
   return (
     <main className="main bg-dark">

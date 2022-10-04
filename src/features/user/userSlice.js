@@ -1,10 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import customFetch from "../../utils/axios";
+import {
+  addUserToLocalStorage,
+  getUserFromLocalStorage,
+  removeUserFromLocalStorage,
+} from "../../utils/localStorage";
 
 const initialState = {
   isLoading: false,
-  user: null,
+  user: getUserFromLocalStorage(),
   authToken: "",
   isMember: true,
 };
@@ -71,6 +76,7 @@ const userSlice = createSlice({
     [getUser.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.user = payload.body;
+      addUserToLocalStorage(payload.body);
     },
     [getUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
