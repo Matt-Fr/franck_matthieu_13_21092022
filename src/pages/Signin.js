@@ -8,7 +8,6 @@ import { loginUser, getUser } from "../features/user/userSlice";
 const initialState = {
   email: "",
   password: "",
-  isMember: true,
 };
 
 const Signin = () => {

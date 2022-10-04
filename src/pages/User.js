@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../features/user/userSlice";
 
 const User = () => {
-  const { isLoading, user } = useSelector((store) => store.user);
+  const { isLoading, user, authToken } = useSelector((store) => store.user);
   const { firstName, lastName } = user;
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({
@@ -16,6 +17,7 @@ const User = () => {
     if (!firstName || !lastName) {
       alert("please fill out all fields");
     }
+    dispatch(updateUser(authToken, userData));
   };
 
   const handleChange = (e) => {
@@ -33,7 +35,7 @@ const User = () => {
           <br />
           {`${firstName} ${lastName}!`}
         </h1>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="firstName">Firstname</label>
             <input

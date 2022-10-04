@@ -54,6 +54,26 @@ export const getUser = createAsyncThunk(
   }
 );
 
+//a mettre à jour
+export const updateUser = createAsyncThunk(
+  "user/updateUser",
+  async (token, user, thunkAPI) => {
+    try {
+      const resp = await customFetch.put("/user/profile", user, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(resp);
+
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -86,6 +106,18 @@ const userSlice = createSlice({
       addUserToLocalStorage(payload.body);
     },
     [getUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      alert(payload);
+    },
+    [updateUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [updateUser.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.user.firstName = payload.body.firstName;
+      state.user.lastName = payload.body.lastName;
+    },
+    [updateUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       alert(payload);
     },
