@@ -3,6 +3,7 @@ import SharedLayout from "./pages/SharedLayout";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import User from "./pages/User";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
@@ -11,7 +12,14 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="/login" element={<Signin />} />
-          <Route path="/profile" element={<User />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <User />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>
