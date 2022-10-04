@@ -24,17 +24,13 @@ const Signin = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    const { email, password, authToken } = values;
+    const { email, password } = values;
     if (!email || !password) {
       console.log("please fill out all fields");
     }
     //on récupère loginUser from the userSlice
     dispatch(loginUser({ email: email, password: password }));
     // dispatch(getUser(authToken));
-  };
-  const onSubmit2 = (e) => {
-    e.preventDefault();
-    dispatch(getUser(authToken));
   };
 
   useEffect(() => {
