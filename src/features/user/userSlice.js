@@ -10,7 +10,7 @@ import {
 const initialState = {
   isLoading: false,
   user: getUserFromLocalStorage(),
-  authToken: "",
+  authToken: null,
   isMember: true,
 };
 
@@ -57,6 +57,13 @@ export const getUser = createAsyncThunk(
 const userSlice = createSlice({
   name: "user",
   initialState,
+  reducers: {
+    logoutUser: (state) => {
+      state.user = null;
+      state.authToken = null;
+      removeUserFromLocalStorage();
+    },
+  },
   extraReducers: {
     [loginUser.pending]: (state) => {
       state.isLoading = true;
@@ -85,4 +92,5 @@ const userSlice = createSlice({
   },
 });
 
+export const { logoutUser } = userSlice.actions;
 export default userSlice.reducer;
