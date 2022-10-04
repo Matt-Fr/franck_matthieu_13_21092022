@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, getUser } from "../features/user/userSlice";
@@ -36,6 +37,12 @@ const Signin = () => {
     dispatch(getUser(authToken));
   };
 
+  useEffect(() => {
+    if (authToken) {
+      dispatch(getUser(authToken));
+    }
+  }, [authToken, dispatch]);
+
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
@@ -70,7 +77,6 @@ const Signin = () => {
           <button className="sign-in-button" type="submit" disabled={isLoading}>
             {isLoading ? "Loading..." : "Sign In"}
           </button>
-          <button onClick={onSubmit2}>second action</button>
         </form>
       </section>
     </main>
