@@ -1,13 +1,22 @@
 import React from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const User = () => {
+  const { isLoading, user } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+  const [userData, setUserData] = useState({
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+  });
+
   return (
     <main class="main bg-dark">
       <div class="header">
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {`${user.firstName} ${user.lastName}!`}
         </h1>
         <button class="edit-button">Edit Name</button>
       </div>
