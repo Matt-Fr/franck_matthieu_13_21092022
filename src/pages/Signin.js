@@ -1,19 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../features/user/userSlice";
+import { loginUser, getUser } from "../features/user/userSlice";
 
 const initialState = {
   email: "",
   password: "",
-  authToken: "",
   isMember: true,
 };
 
 const Signin = () => {
   const [values, setValues] = useState(initialState);
   //{user} que je récupère du store
-  const { user, isLoading } = useSelector((store) => store.user);
+  const { user, isLoading, authToken } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -29,7 +28,12 @@ const Signin = () => {
       console.log("please fill out all fields");
     }
     //on récupère loginUser from the userSlice
-    dispatch(loginUser({ email: email, password: password, token: authToken }));
+    dispatch(loginUser({ email: email, password: password }));
+    // dispatch(getUser(authToken));
+  };
+  const onSubmit2 = (e) => {
+    e.preventDefault();
+    dispatch(getUser(authToken));
   };
 
   return (
@@ -64,8 +68,9 @@ const Signin = () => {
           </div>
 
           <button className="sign-in-button" type="submit" disabled={isLoading}>
-            Sign In
+            {isLoading ? "Loading..." : "Sign In"}
           </button>
+          <button onClick={onSubmit2}>second action</button>
         </form>
       </section>
     </main>

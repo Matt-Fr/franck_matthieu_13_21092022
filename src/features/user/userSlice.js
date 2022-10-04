@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 import customFetch from "../../utils/axios";
 
 const initialState = {
@@ -26,6 +26,29 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const getUser = createAsyncThunk(
+  "user/profile",
+  async (token, thunkAPI) => {
+    try {
+      const resp = await customFetch.post(
+        "/user/profile",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(resp);
+
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -37,7 +60,6 @@ const userSlice = createSlice({
       //payload is what we obtain in the return in the asyncthunk
       state.isLoading = false;
       state.authToken = payload.body.token;
-      alert(state.authToken);
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
