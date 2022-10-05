@@ -12,19 +12,21 @@ const User = () => {
     lastName: user?.lastName || "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!firstName || !lastName) {
-      alert("please fill out all fields");
-    }
-    dispatch(updateUser(authToken));
-  };
+  console.log(userData);
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setUserData({ ...userData, [name]: value });
     console.log(`${name} ${value}`);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!firstName || !lastName) {
+      alert("please fill out all fields");
+    }
+    dispatch(updateUser(authToken, userData));
   };
 
   return (
