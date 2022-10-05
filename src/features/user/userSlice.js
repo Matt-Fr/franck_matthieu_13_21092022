@@ -24,8 +24,6 @@ export const authLoginUser = createAsyncThunk(
       console.log(`ce qu'on va balancer au serveur ${JSON.stringify(user)}`);
       const resp = await customFetch.post("/user/login", user);
       console.log(resp);
-      // const token = resp.data.body.token;
-      // localStorage.setItem("userToken", token);
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -53,12 +51,11 @@ export const getUser = createAsyncThunk(
   }
 );
 
-//a mettre à jour
 export const updateUser = createAsyncThunk(
   "user/updateUser",
-  async (token, inputUser, thunkAPI) => {
+  async (token, userNames, thunkAPI) => {
     try {
-      const resp = await customFetch.put("/user/profile", inputUser, {
+      const resp = await customFetch.put("/user/profile", userNames, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
