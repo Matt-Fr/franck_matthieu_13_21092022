@@ -31,7 +31,6 @@ const Signin = () => {
     }
     //on récupère authloginUser from the userSlice
     dispatch(authLoginUser({ email: email, password: password }));
-    // dispatch(getUser(authToken));
   };
 
   useEffect(() => {

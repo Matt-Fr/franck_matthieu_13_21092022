@@ -56,18 +56,26 @@ export const getUser = createAsyncThunk(
 //a mettre à jour
 export const updateUser = createAsyncThunk(
   "user/updateUser",
-  async (token, user, thunkAPI) => {
+  async (token, thunkAPI) => {
     try {
-      const resp = await customFetch.put("/user/profile", user, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const resp = await customFetch.put(
+        "/user/profile",
+        {
+          firstName: "Bob",
+          lastName: "Starky",
         },
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       console.log(resp);
 
       return resp.data;
     } catch (error) {
+      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }

@@ -17,7 +17,7 @@ const User = () => {
     if (!firstName || !lastName) {
       alert("please fill out all fields");
     }
-    dispatch(updateUser(authToken, userData));
+    dispatch(updateUser(authToken));
   };
 
   const handleChange = (e) => {
