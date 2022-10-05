@@ -14,7 +14,7 @@ const initialState = {
   isMember: true,
 };
 
-export const loginUser = createAsyncThunk(
+export const authLoginUser = createAsyncThunk(
   "user/login",
   async (user, thunkAPI) => {
     try {
@@ -44,9 +44,6 @@ export const getUser = createAsyncThunk(
           },
         }
       );
-
-      console.log(resp);
-
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -85,15 +82,15 @@ const userSlice = createSlice({
     },
   },
   extraReducers: {
-    [loginUser.pending]: (state) => {
+    [authLoginUser.pending]: (state) => {
       state.isLoading = true;
     },
-    [loginUser.fulfilled]: (state, { payload }) => {
+    [authLoginUser.fulfilled]: (state, { payload }) => {
       //payload is what we obtain in the return in the asyncthunk
       state.isLoading = false;
       state.authToken = payload.body.token;
     },
-    [loginUser.rejected]: (state, { payload }) => {
+    [authLoginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       alert(payload);
     },

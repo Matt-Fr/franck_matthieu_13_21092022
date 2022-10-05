@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser, getUser } from "../features/user/userSlice";
+import { authLoginUser, getUser } from "../features/user/userSlice";
 
 const initialState = {
   email: "",
@@ -29,8 +29,8 @@ const Signin = () => {
     if (!email || !password) {
       console.log("please fill out all fields");
     }
-    //on récupère loginUser from the userSlice
-    dispatch(loginUser({ email: email, password: password }));
+    //on récupère authloginUser from the userSlice
+    dispatch(authLoginUser({ email: email, password: password }));
     // dispatch(getUser(authToken));
   };
 
