@@ -2,16 +2,18 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import customFetch from "../../utils/axios";
 import {
+  addTokenToLocalStorage,
   addUserToLocalStorage,
+  getTokenFromLocalStorage,
   getUserFromLocalStorage,
+  removeTokenFromLocalStorage,
   removeUserFromLocalStorage,
 } from "../../utils/localStorage";
 
 const initialState = {
   isLoading: false,
   user: getUserFromLocalStorage(),
-  authToken: null,
-  isMember: true,
+  authToken: getTokenFromLocalStorage(),
 };
 
 export const authLoginUser = createAsyncThunk(
@@ -79,6 +81,7 @@ const userSlice = createSlice({
       state.user = null;
       state.authToken = null;
       removeUserFromLocalStorage();
+      removeTokenFromLocalStorage();
     },
   },
   extraReducers: {
@@ -89,6 +92,7 @@ const userSlice = createSlice({
       //payload is what we obtain in the return in the asyncthunk
       state.isLoading = false;
       state.authToken = payload.body.token;
+      addTokenToLocalStorage(payload.body.token);
     },
     [authLoginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;

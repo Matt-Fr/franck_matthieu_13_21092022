@@ -10,3 +10,16 @@ export const getUserFromLocalStorage = () => {
   const user = result ? JSON.parse(result) : null;
   return user;
 };
+
+export const addTokenToLocalStorage = (token) => {
+  localStorage.setItem("authToken", token);
+};
+
+export const removeTokenFromLocalStorage = () => {
+  localStorage.removeItem("authToken");
+};
+
+export const getTokenFromLocalStorage = () => {
+  const getToken = localStorage.getItem("authToken");
+  return getToken;
+};
