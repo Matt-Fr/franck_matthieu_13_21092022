@@ -116,8 +116,6 @@ const userSlice = createSlice({
     },
     [updateUser.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.user.firstName = payload.body.firstName;
-      state.user.lastName = payload.body.lastName;
     },
     [updateUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
