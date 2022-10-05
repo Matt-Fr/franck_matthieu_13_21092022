@@ -1,7 +1,8 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../features/user/userSlice";
+import { getUser, updateUser } from "../features/user/userSlice";
 
 const User = () => {
   const { isLoading, user, authToken } = useSelector((store) => store.user);
@@ -26,8 +27,15 @@ const User = () => {
     if (!firstName || !lastName) {
       alert("please fill out all fields");
     }
-    dispatch(updateUser(authToken, userData));
+    console.log(authToken, userData);
+    dispatch(updateUser({ authToken, userData }));
   };
+
+  useEffect(() => {
+    if (authToken) {
+      dispatch(getUser(authToken));
+    }
+  }, [authToken, dispatch]);
 
   return (
     <main className="main bg-dark">

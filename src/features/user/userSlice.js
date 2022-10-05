@@ -53,11 +53,11 @@ export const getUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   "user/updateUser",
-  async (token, userNames, thunkAPI) => {
+  async ({ authToken, userData }, thunkAPI) => {
     try {
-      const resp = await customFetch.put("/user/profile", userNames, {
+      const resp = await customFetch.put("/user/profile", userData, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${authToken}`,
         },
       });
 
@@ -113,6 +113,8 @@ const userSlice = createSlice({
     },
     [updateUser.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
+      state.user.firstName = payload.body.firstName;
+      state.user.lastName = payload.body.lastName;
     },
     [updateUser.rejected]: (state, { payload }) => {
       state.isLoading = false;

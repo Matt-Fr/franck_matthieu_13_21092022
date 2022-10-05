@@ -34,12 +34,6 @@ const Signin = () => {
   };
 
   useEffect(() => {
-    if (authToken) {
-      dispatch(getUser(authToken));
-    }
-  }, [authToken, dispatch]);
-
-  useEffect(() => {
     if (user) {
       navigate("/profile");
     }
