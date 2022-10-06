@@ -39,6 +39,12 @@ const Signin = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (authToken) {
+      dispatch(getUser(authToken));
+    }
+  }, [authToken, dispatch]);
+
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">

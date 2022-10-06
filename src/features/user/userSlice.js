@@ -4,6 +4,7 @@ import customFetch from "../../utils/axios";
 import {
   addTokenToLocalStorage,
   addUserToLocalStorage,
+  changeFirstNameFromLocalStorage,
   getTokenFromLocalStorage,
   getUserFromLocalStorage,
   removeTokenFromLocalStorage,
@@ -115,6 +116,7 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.user.firstName = payload.body.firstName;
       state.user.lastName = payload.body.lastName;
+      addUserToLocalStorage(payload.body);
     },
     [updateUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
