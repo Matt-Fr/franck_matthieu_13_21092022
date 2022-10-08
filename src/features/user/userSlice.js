@@ -1,10 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 import customFetch from "../../utils/axios";
 import {
   addTokenToLocalStorage,
   addUserToLocalStorage,
-  changeFirstNameFromLocalStorage,
   getTokenFromLocalStorage,
   getUserFromLocalStorage,
   removeTokenFromLocalStorage,
