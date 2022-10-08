@@ -56,7 +56,7 @@ const User = () => {
           {`${firstName} ${lastName}!`}
         </h1>
         {isNameFormOpen ? (
-          <form action="" onSubmit={handleSubmit}>
+          <form action="" onSubmit={handleSubmit} className="formEditName">
             <div className="input-wrapper">
               <label htmlFor="firstName">Firstname</label>
               <input
