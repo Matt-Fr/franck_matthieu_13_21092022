@@ -2,12 +2,21 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, updateUser } from "../features/user/userSlice";
+import {
+  getUser,
+  updateUser,
+  toggleNameForm,
+} from "../features/user/userSlice";
 
 const User = () => {
-  const { isLoading, user, authToken } = useSelector((store) => store.user);
-  const { firstName, lastName } = user;
   const dispatch = useDispatch();
+  const { isLoading, user, authToken, isNameFormOpen } = useSelector(
+    (store) => store.user
+  );
+  const toggleForm = () => {
+    dispatch(toggleNameForm());
+  };
+  const { firstName, lastName } = user;
   const [userData, setUserData] = useState({
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
@@ -45,30 +54,46 @@ const User = () => {
           <br />
           {`${firstName} ${lastName}!`}
         </h1>
-        <form action="" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="firstName">Firstname</label>
-            <input
-              type="text"
-              name="firstName"
-              value={userData.firstName}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="LastName">Lastname</label>
-            <input
-              type="text"
-              name="lastName"
-              value={userData.lastName}
-              onChange={handleChange}
-            />
-          </div>
-          <button className="edit-button" type="submit" disabled={isLoading}>
-            {isLoading ? "isLoading..." : "Save Name"}
+        {isNameFormOpen ? (
+          <form action="" onSubmit={handleSubmit}>
+            <div className="input-wrapper">
+              <label htmlFor="firstName">Firstname</label>
+              <input
+                type="text"
+                name="firstName"
+                value={userData.firstName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="LastName">Lastname</label>
+              <input
+                type="text"
+                name="lastName"
+                value={userData.lastName}
+                onChange={handleChange}
+              />
+            </div>
+            <button
+              className="edit-button"
+              type="submit"
+              disabled={isLoading}
+              onClick={toggleForm}
+            >
+              {isLoading ? "isLoading..." : "Save Name"}
+            </button>
+          </form>
+        ) : (
+          ""
+        )}
+
+        {isNameFormOpen ? (
+          ""
+        ) : (
+          <button className="edit-button" onClick={toggleForm}>
+            Edit Name
           </button>
-        </form>
-        <button className="edit-button">Edit Name</button>
+        )}
       </div>
       <h2 className="sr-only">Accounts</h2>
       <section className="account">

@@ -13,6 +13,7 @@ const initialState = {
   isLoading: false,
   user: getUserFromLocalStorage(),
   authToken: getTokenFromLocalStorage(),
+  isNameFormOpen: false,
 };
 
 export const authLoginUser = createAsyncThunk(
@@ -80,6 +81,9 @@ const userSlice = createSlice({
       removeUserFromLocalStorage();
       removeTokenFromLocalStorage();
     },
+    toggleNameForm: (state) => {
+      state.isNameFormOpen = !state.isNameFormOpen;
+    },
   },
   extraReducers: {
     [authLoginUser.pending]: (state) => {
@@ -123,5 +127,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { logoutUser } = userSlice.actions;
+export const { logoutUser, toggleNameForm } = userSlice.actions;
 export default userSlice.reducer;
