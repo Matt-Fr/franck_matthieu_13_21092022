@@ -38,6 +38,7 @@ const User = () => {
     }
     console.log(authToken, userData);
     dispatch(updateUser({ authToken, userData }));
+    toggleForm();
   };
 
   useEffect(() => {
@@ -74,12 +75,7 @@ const User = () => {
                 onChange={handleChange}
               />
             </div>
-            <button
-              className="edit-button"
-              type="submit"
-              disabled={isLoading}
-              onClick={toggleForm}
-            >
+            <button className="edit-button" type="submit" disabled={isLoading}>
               {isLoading ? "isLoading..." : "Save Name"}
             </button>
           </form>
