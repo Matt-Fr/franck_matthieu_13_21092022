@@ -297,3 +297,12 @@ body {
     width: 200px;
   }
 }
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginContainer a {
+  margin: 0 0 0 0.3rem;
+}

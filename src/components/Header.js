@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import argentBankLogo from "../assets/argentBankLogo.png";
 import { logoutUser } from "../features/user/userSlice";
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,8 @@ const Header = () => {
       <NavLink className="main-nav-logo " to="/">
         <img src={argentBankLogo} alt="logo" className="main-nav-logo-image" />
       </NavLink>
-      <div>
-        {/* <FontAwesomeIcon icon="fa-solid fa-circle-user" /> */}
+      <div className="loginContainer">
+        <FaUserCircle />
         <NavLink
           className="main-nav-item"
           to="/login"
