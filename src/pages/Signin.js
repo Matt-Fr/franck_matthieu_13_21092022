@@ -12,7 +12,6 @@ const initialState = {
 
 const Signin = () => {
   const [values, setValues] = useState(initialState);
-  //{user} que je récupère du store
   const { user, isLoading, authToken } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,7 +28,6 @@ const Signin = () => {
     if (!email || !password) {
       console.log("please fill out all fields");
     }
-    //on récupère authloginUser from the userSlice
     dispatch(authLoginUser({ email: email, password: password }));
   };
 
