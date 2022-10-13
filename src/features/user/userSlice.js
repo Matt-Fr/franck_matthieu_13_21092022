@@ -20,8 +20,6 @@ export const authLoginUser = createAsyncThunk(
   "user/authLogin",
   async (user, thunkAPI) => {
     try {
-      console.log(initialState);
-      console.log(`ce qu'on va balancer au serveur ${JSON.stringify(user)}`);
       const resp = await customFetch.post("/user/login", user);
       console.log(resp);
       return resp.data;
