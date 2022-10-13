@@ -21,7 +21,6 @@ export const authLoginUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const resp = await customFetch.post("/user/login", user);
-      console.log(resp);
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
