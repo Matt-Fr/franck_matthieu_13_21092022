@@ -58,8 +58,6 @@ export const updateUser = createAsyncThunk(
         },
       });
 
-      console.log(resp);
-
       return resp.data;
     } catch (error) {
       console.log(error);
