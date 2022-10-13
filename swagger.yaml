@@ -257,9 +257,7 @@ paths:
         - application/json
       responses:
         '200':
-          description: transaction successfully modified
-          schema:
-            $ref: '#/definitions/FetchingTransactionResponse'
+          description: Success ! transaction successfully modified
         '400':
           description: Invalid Fields
         '401':
