@@ -175,8 +175,6 @@ paths:
       responses:
         '200':
           description: Transaction added successully
-          schema:
-            $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
         '401':
@@ -356,5 +354,3 @@ definitions:
             type: string
           Notes:
             type: string
-  
- 
