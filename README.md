@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Project 13 OpenClassrooms - Use an API for a bank account with React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Build a web application for customers of Argent Bank to log in as well as manage their accounts and profiles.
 
-## Available Scripts
+[![React](https://img.shields.io/badge/React-v18.2.0-brightgreen)](https://fr.reactjs.org/)
+[![React router](https://img.shields.io/badge/React%20Router-v6.4.0-orange)](https://v5.reactrouter.com/web/guides/quick-start)
+[![React Redux](https://img.shields.io/badge/React%20Redux-v8.0.4-critical)](https://react-redux.js.org/)
+[![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-v1.8.5-blueviolet)](https://redux-toolkit.js.org/)
+[![Axios](https://img.shields.io/badge/Axios-v0.27.2-ff69b4)](https://axios-http.com/docs/intro)
 
-In the project directory, you can run:
+## Key Features
 
-### `npm start`
+- User can visit the home page
+- User can log in to the system
+- User can log out of the system
+- User can see their own profile information only after successful login
+- User can change the profile and keep the data in the database.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## API Reference
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### 1. Backend
 
-### `npm test`
+- Clone the Backend on your computer:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+  git clone https://github.com/Matt-Fr/Project-10-Bank-API
+```
 
-### `npm run build`
+- Follow the installation instructions in the readme file provided.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 2. Frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Clone the Frontend App on your computer:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+  git clone https://github.com/Matt-Fr/franck_matthieu_13_21092022
+```
 
-### `npm run eject`
+- Install the packages/dependencies : npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- run the app on a local server : npm start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- The App runs on http://localhost:3000/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Simulated user log in information
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Tony Stark
 
-## Learn More
+- First Name: `Tony`
+- Last Name: `Stark`
+- Email: `tony@stark.com`
+- Password: `password123`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Steve Rogers
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- First Name: `Steve`
+- Last Name: `Rogers`
+- Email: `steve@rogers.com`
+- Password: `password456`
 
-### Code Splitting
+## Documentation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [React](https://fr.reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [React Router](https://v5.reactrouter.com/web/guides/quick-start)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Axios](https://axios-http.com/docs/intro)
+- [Prettier](https://prettier.io/docs/en/install.html)
+- [Swagger Editor](https://swagger.io/tools/swagger-editor/)
